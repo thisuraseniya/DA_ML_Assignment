@@ -7,17 +7,19 @@ from matplotlib import pyplot as plt
 from sklearn import metrics
 from sklearn.metrics import confusion_matrix
 
-# setting seed value
-tf.random.set_seed(123)
-
-# setting pandas options (purely for convenience)
-pd.set_option("display.max_rows", None)
-pd.set_option("display.max_columns", None)
 
 # reading the dataset
 # parameters - path, name of the sheet, not-available value identifier, label row
 test_dataset = pd.read_excel(".\\IS4003_SCS4104_CS4104_dataset.xlsx", "Testing Dataset", na_values=["?"], header=0, )
 train_dataset = pd.read_excel(".\\IS4003_SCS4104_CS4104_dataset.xlsx", "Training Dataset", na_values=["?"], header=0)
+
+
+# setting pandas options (purely for convenience)
+pd.set_option("display.max_rows", None)
+pd.set_option("display.max_columns", None)
+
+# setting seed value
+tf.random.set_seed(123)
 
 
 # function to cleanup the dataset
@@ -26,6 +28,7 @@ def cleanup_dataset(dataset, name):
     dataset.pop("ID")
 
     print("Sum of missing values per column in ", name, " :\n", dataset.isnull().sum(), sep="")
+    print("Total rows in", name, ":", len(dataset))
     print("Duplicate rows in", name, ":", dataset.duplicated(subset=None, keep=False).sum())
 
     # removing duplicate rows
@@ -55,10 +58,11 @@ test_dataset = cleanup_dataset(test_dataset, "Testing dataset")
 train_class = train_dataset.pop("Class")
 test_class = test_dataset.pop("Class")
 
-categorical = ["Gender"]
-numerical = ["Age", "TB", "DB", "ALK", "SGPT", "SGOT", "TP", "ALB", "AG_Ratio"]
-
+# will contain all the feature_columns that are used in tensorflow
 feature_columns = []
+
+# categorical columns in the dataset
+categorical = ["Gender"]
 
 # one-hot encoding categorical features and adding them to feature_columns array
 for feature in categorical:
@@ -66,21 +70,29 @@ for feature in categorical:
     feature_columns.append(
         tf.feature_column.indicator_column(tf.feature_column.categorical_column_with_vocabulary_list(feature,
                                                                                                      vocabulary)))
+
+# numerical columns in the dataset
+numerical = ["Age", "TB", "DB", "ALK", "SGPT", "SGOT", "TP", "ALB", "AG_Ratio"]
+
 # adding numerical features to feature_column array
 for feature in numerical:
     feature_columns.append(tf.feature_column.numeric_column(feature, dtype=tf.float32))
 
 
 # making the input function
-def make_input_fn(x, y, n_epochs=None, shuffle=True):
+def make_input_fn(ds, cls, n_epochs=None, shuffle=True):
     def input_fn():
-        dataset = tf.data.Dataset.from_tensor_slices((dict(x), y))
+        dataset = tf.data.Dataset.from_tensor_slices((dict(ds), cls))
+
         if shuffle:
             dataset = dataset.shuffle(len(train_class))
+
+        # cycle through many times as needed for training
         dataset = dataset.repeat(n_epochs)
 
         # using the entire training data for the batch
         dataset = dataset.batch(len(train_class))
+
         return dataset
 
     return input_fn
@@ -95,7 +107,7 @@ n_batches = 1
 model = tf.estimator.BoostedTreesClassifier(feature_columns, n_batches_per_layer=n_batches, learning_rate=0.2)
 
 # training the model
-model.train(train_input_fn, max_steps=500)
+model.train(train_input_fn, max_steps=200)
 
 # get model prediction for evaluation and visualisation
 predictions = list(model.predict(test_input_fn))
@@ -122,14 +134,13 @@ classification_error = (FP + FN) / float(TP + TN + FP + FN)
 sensitivity = TP / float(FN + TP)
 specificity = TN / (TN + FP)
 precision = TP / float(TP + FP)
-false_positive_rate = FP / float(TN + FP)
 
 print("Accuracy : {:.4f}".format(accuracy))
 print("Precision : {:.4f}".format(precision))
-print("Error rate : {:.4f}".format(classification_error))
 print("Sensitivity : {:.4f}".format(sensitivity))
 print("Specificity : {:.4f}".format(specificity))
-print("FPR : {:.4f}".format(false_positive_rate))
+print("Error rate : {:.4f}".format(classification_error))
+
 print("False Positives : ", FP)
 print("False Negatives : ", FN)
 print("True Positives : ", TP)

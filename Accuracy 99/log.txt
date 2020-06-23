@@ -1,0 +1,117 @@
+C:\Users\Seniya\AppData\Local\Programs\Python\Python36\python.exe C:/Users/Seniya/Documents/GitHub/DA_ML_Assignment/BoostedTree.py
+2020-06-23 23:07:26.430320: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudart64_101.dll
+Sum of missing values per column in Training dataset :
+Age         0
+Gender      0
+TB          2
+DB          4
+ALK         2
+SGPT        1
+SGOT        1
+TP          2
+ALB         2
+AG_Ratio    1
+Class       0
+dtype: int64
+Total rows in Training dataset : 583
+Duplicate rows in Training dataset : 26
+# rows after removing duplicates :  570
+Sum of missing values per column in Testing dataset :
+Age         0
+Gender      0
+TB          4
+DB          3
+ALK         2
+SGPT        3
+SGOT        2
+TP          1
+ALB         1
+AG_Ratio    2
+Class       0
+dtype: int64
+Total rows in Testing dataset : 311
+Duplicate rows in Testing dataset : 4
+# rows after removing duplicates :  309
+WARNING:tensorflow:Using temporary folder as model directory: C:\Users\Seniya\AppData\Local\Temp\tmpclebz_ll
+WARNING:tensorflow:From C:\Users\Seniya\AppData\Local\Programs\Python\Python36\lib\site-packages\tensorflow_estimator\python\estimator\canned\boosted_trees.py:398: VocabularyListCategoricalColumn._num_buckets (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed in a future version.
+Instructions for updating:
+The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
+WARNING:tensorflow:From C:\Users\Seniya\AppData\Local\Programs\Python\Python36\lib\site-packages\tensorflow\python\ops\resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+WARNING:tensorflow:From C:\Users\Seniya\AppData\Local\Programs\Python\Python36\lib\site-packages\tensorflow\python\training\training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+2020-06-23 23:07:29.316380: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library nvcuda.dll
+2020-06-23 23:07:29.531602: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties:
+pciBusID: 0000:01:00.0 name: GeForce 940MX computeCapability: 5.0
+coreClock: 1.2415GHz coreCount: 3 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 13.41GiB/s
+2020-06-23 23:07:29.531931: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudart64_101.dll
+2020-06-23 23:07:29.535804: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cublas64_10.dll
+2020-06-23 23:07:29.538889: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cufft64_10.dll
+2020-06-23 23:07:29.540040: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library curand64_10.dll
+2020-06-23 23:07:29.544247: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cusolver64_10.dll
+2020-06-23 23:07:29.547444: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cusparse64_10.dll
+2020-06-23 23:07:29.548756: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudnn64_7.dll'; dlerror: cudnn64_7.dll not found
+2020-06-23 23:07:29.549005: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1598] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+WARNING:tensorflow:Issue encountered when serializing resources.
+Type is unsupported, or the types of the items don't match field type in CollectionDef. Note this is a warning and probably safe to ignore.
+'_Resource' object has no attribute 'name'
+2020-06-23 23:07:29.995625: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+2020-06-23 23:07:30.003121: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x2a4d32a3a70 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-06-23 23:07:30.003444: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-06-23 23:07:30.164331: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties:
+pciBusID: 0000:01:00.0 name: GeForce 940MX computeCapability: 5.0
+coreClock: 1.2415GHz coreCount: 3 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 13.41GiB/s
+2020-06-23 23:07:30.164777: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudart64_101.dll
+2020-06-23 23:07:30.165004: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cublas64_10.dll
+2020-06-23 23:07:30.165474: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cufft64_10.dll
+2020-06-23 23:07:30.165790: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library curand64_10.dll
+2020-06-23 23:07:30.166112: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cusolver64_10.dll
+2020-06-23 23:07:30.166435: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cusparse64_10.dll
+2020-06-23 23:07:30.169865: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudnn64_7.dll'; dlerror: cudnn64_7.dll not found
+2020-06-23 23:07:30.170223: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1598] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2020-06-23 23:07:30.249080: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-23 23:07:30.249267: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0
+2020-06-23 23:07:30.249373: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N
+2020-06-23 23:07:30.251978: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x2a4d690bc70 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-06-23 23:07:30.252200: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce 940MX, Compute Capability 5.0
+WARNING:tensorflow:Issue encountered when serializing resources.
+Type is unsupported, or the types of the items don't match field type in CollectionDef. Note this is a warning and probably safe to ignore.
+'_Resource' object has no attribute 'name'
+WARNING:tensorflow:Issue encountered when serializing resources.
+Type is unsupported, or the types of the items don't match field type in CollectionDef. Note this is a warning and probably safe to ignore.
+'_Resource' object has no attribute 'name'
+WARNING:tensorflow:It seems that global step (tf.train.get_global_step) has not been increased. Current value (could be stable): 0 vs previous value: 0. You could increase the global step by passing tf.train.get_global_step() to Optimizer.apply_gradients or Optimizer.minimize.
+WARNING:tensorflow:Issue encountered when serializing resources.
+Type is unsupported, or the types of the items don't match field type in CollectionDef. Note this is a warning and probably safe to ignore.
+'_Resource' object has no attribute 'name'
+2020-06-23 23:07:34.108537: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties:
+pciBusID: 0000:01:00.0 name: GeForce 940MX computeCapability: 5.0
+coreClock: 1.2415GHz coreCount: 3 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 13.41GiB/s
+2020-06-23 23:07:34.109048: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudart64_101.dll
+2020-06-23 23:07:34.109215: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cublas64_10.dll
+2020-06-23 23:07:34.109380: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cufft64_10.dll
+2020-06-23 23:07:34.109544: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library curand64_10.dll
+2020-06-23 23:07:34.109708: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cusolver64_10.dll
+2020-06-23 23:07:34.109883: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cusparse64_10.dll
+2020-06-23 23:07:34.111478: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudnn64_7.dll'; dlerror: cudnn64_7.dll not found
+2020-06-23 23:07:34.111683: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1598] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2020-06-23 23:07:34.112350: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-23 23:07:34.112516: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0
+2020-06-23 23:07:34.112619: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N
+Accuracy : 0.9968
+Precision : 0.9955
+Error rate : 0.0032
+Sensitivity : 1.0000
+Specificity : 0.9889
+FPR : 0.0111
+False Positives :  1
+False Negatives :  0
+True Positives :  219
+True Negatives :  89
+
+Process finished with exit code 0
